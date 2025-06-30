@@ -1,24 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hi Page</title>
+  <meta charset="UTF-8" />
+  <title>Lunaris Events</title>
   <style>
     body {
-      background-color: rgb(15, 5, 24); /* Dark Purple */
-      color: rgb(255, 255, 255);        /* White text */
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(3, 7, 31);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Starfield background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #9ab8ff, #b388ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    /* Schedule Styles */
+    .day-block {
+      margin-top: 40px;
+    }
+
+    .day-title {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .day-circle {
+      width: 32px;
+      height: 32px;
+      background-color: #6d62ff;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-size: 48px;
+      font-size: 16px;
+    }
+
+    .event-card {
+      background-color: #1e1a2e;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      box-shadow: 0 0 15px rgba(122, 114, 255, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(122, 114, 255, 0.3);
+    }
+
+    .event-time {
+      color: #9ab8ff;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .event-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 4px;
+    }
+
+    .event-desc {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 2px;
+    }
+
+    /* Side-by-side Events */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .event-box {
+      background-color: #1e1a2e;
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(122, 114, 255, 0.1);
+    }
+
+    .event-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(122, 114, 255, 0.3);
+    }
+
+    .event-box-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #9ab8ff;
+      margin-bottom: 10px;
+    }
+
+    .event-box-desc {
+      font-size: 14px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  hi 
+
+  <!-- Twinkling Stars Background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Event Schedule -->
+  <div class="section">
+    <div class="section-title">Event Schedule</div>
+    <div class="section-subtitle">Mark your calendar for 48 hours of innovation, collaboration, and fun!</div>
+
+    <div class="day-block">
+      <div class="day-title"><div class="day-circle">1</div>Day One - Friday</div>
+
+      <div class="event-card">
+        <div class="event-time">5:00 PM</div>
+        <div class="event-title">Registration & Check-in</div>
+        <div class="event-desc">Get your badge, swag bag, and meet fellow participants</div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-time">6:00 PM</div>
+        <div class="event-title">Opening Ceremony</div>
+        <div class="event-desc">Welcome address, introduction to Lunaris Hacks, and keynote speech</div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-time">7:00 PM</div>
+        <div class="event-title">Team Formation & Dinner</div>
+        <div class="event-desc">Find your team members and enjoy dinner while brainstorming</div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-time">8:00 PM</div>
+        <div class="event-title">Hacking Begins!</div>
+        <div class="event-desc">Start working on your projects with mentor support available</div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-title"><div class="day-circle">2</div>Day Two - Saturday</div>
+
+      <div class="event-card">
+        <div class="event-time">8:00 AM</div>
+        <div class="event-title">Breakfast</div>
+        <div class="event-desc">Fuel up for a day of innovation and creating</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side-by-Side Events -->
+  <div class="section">
+    <div class="section-title">Event Highlights</div>
+    <div class="section-subtitle">Discover key parts of the Lunaris experience</div>
+
+    <div class="event-grid">
+      <div class="event-box">
+        <div class="event-box-title">Workshops</div>
+        <div class="event-box-desc">Hands-on sessions to master microcontrollers, satellite comms, and more.</div>
+      </div>
+
+      <div class="event-box">
+        <div class="event-box-title">Challenge Tracks</div>
+        <div class="event-box-desc">Tackle real-world problems in sustainability, health tech, smart cities, and more.</div>
+      </div>
+
+      <div class="event-box">
+        <div class="event-box-title">Mentorship</div>
+        <div class="event-box-desc">Get guidance from industry experts throughout the event to boost your project.</div>
+      </div>
+
+      <div class="event-box">
+        <div class="event-box-title">Networking</div>
+        <div class="event-box-desc">Meet engineers, innovators, and sponsors from across Canada and beyond.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script to Generate Stars -->
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+  </script>
 </body>
 </html>
-
