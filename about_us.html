@@ -1,152 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Lunaris Hacks</title>
+  <title>About | Lunaris Hacks</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d22;
+      padding: 0;
+      background: #0b0e1c;
       color: #ffffff;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px;
+      margin: auto;
+      padding: 80px 20px;
     }
 
-    h1 {
+    .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: #9ab8ff;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 60px;
     }
 
-    .card-container {
+    .section-title span {
+      background: linear-gradient(to right, #7f5af0, #00c3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card-grid {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
     }
 
     .card {
       flex: 1 1 30%;
-      background-color: #1e1a2e;
+      background-color: #15162b;
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 16px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid #2e2e4a;
     }
 
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #b388ff;
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
     }
 
     .card p {
-      color: #cccccc;
-      font-size: 1rem;
+      font-size: 15px;
+      color: #cbd5e1;
     }
 
-    .fresh-take {
-      background-color: #1e1a2e;
+    .fresh-section {
+      background-color: #15162b;
       padding: 40px;
-      border-radius: 12px;
+      border-radius: 16px;
       display: flex;
+      gap: 40px;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
-    .fresh-text {
-      flex: 2;
+    .fresh-section .text {
+      flex: 1 1 60%;
     }
 
-    .fresh-text h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #9ab8ff;
+    .fresh-section h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #ffffff;
     }
 
-    .fresh-text p {
-      font-size: 1rem;
-      color: #ccc;
-    }
-
-    .fresh-icon {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .fresh-section p {
+      font-size: 15px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
     }
 
     .circle {
-      background-color: #6a4fff;
+      flex: 1 1 30%;
+      background: #4f46e5;
       border-radius: 50%;
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 200px;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #ffffff;
       font-weight: bold;
+      color: white;
       text-align: center;
-      font-size: 0.9rem;
-      padding: 20px;
+      margin: auto;
+    }
+
+    .highlight-text {
+      text-align: center;
+      font-size: 16px;
+      color: #93c5fd;
+      margin-top: 40px;
     }
 
     .bottom-text {
       text-align: center;
-      font-size: 1rem;
-      color: #aaa;
-      margin-top: 20px;
-    }
-
-    .highlight {
-      color: #9ab8ff;
+      font-size: 14px;
+      margin-top: 8px;
+      color: #cbd5e1;
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <h1>About <span class="highlight">Lunaris Hacks</span></h1>
+    <div class="section-title">About <span>Lunaris Hacks</span></div>
 
-    <div class="card-container">
+    <div class="card-grid">
       <div class="card">
-        <h2>Innovation</h2>
+        <h3>Innovation</h3>
         <p>Push the boundaries of what’s possible with creative solutions and innovative engineering approaches.</p>
       </div>
       <div class="card">
-        <h2>Collaboration</h2>
+        <h3>Collaboration</h3>
         <p>Connect with engineers from diverse disciplines to build something extraordinary through teamwork.</p>
       </div>
       <div class="card">
-        <h2>Impact</h2>
+        <h3>Impact</h3>
         <p>Create solutions that address real-world challenges and make a meaningful difference.</p>
       </div>
     </div>
 
-    <div class="fresh-take">
-      <div class="fresh-text">
+    <div class="fresh-section">
+      <div class="text">
         <h2>A Fresh Take on Hackathons</h2>
         <p>Lunaris Hacks combines the best parts of case competitions and traditional hackathons into one. It’s not just about building cool projects — it’s about pitching your ideas, defending them, and showing off both your technical skills and creative thinking.</p>
         <p>At Lunaris, we see engineers as more than just coders — they’re problem-solvers, designers, and future innovators. We’re building an event where creativity meets real-world impact, and where anyone passionate about engineering can bring their ideas to life.</p>
       </div>
-      <div class="fresh-icon">
-        <div class="circle">ALL ENGINEERS WELCOME</div>
+      <div class="circle">
+        ALL ENGINEERS<br />WELCOME
       </div>
     </div>
 
-    <div class="bottom-text">
+    <div class="highlight-text">
       Open to all types of engineers — mechanical, biomedical, computer, civil, or anything else. Everyone’s ideas and skills are welcome here.
     </div>
     <div class="bottom-text">
@@ -154,6 +154,5 @@
     </div>
   </div>
 </body>
-
 </html>
 
