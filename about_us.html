@@ -1,199 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>About Lunaris</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Lunaris Hacks</title>
   <style>
-    /* Base styles */
     body {
       margin: 0;
-      padding: 0;
-      background-color: rgb(3, 7, 31); /* Match Events Page Background */
-      color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      position: relative;
+      background-color: #0d0d22;
+      color: #ffffff;
+      line-height: 1.6;
     }
 
-    /* Star field overlay */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: twinkle 2s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    /* Section layout */
-    .section {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      position: relative;
-      z-index: 1;
     }
 
-    .title {
-      font-size: 36px;
-      font-weight: bold;
+    h1 {
       text-align: center;
-      background: linear-gradient(to right, #9ab8ff, #b388ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #9ab8ff;
     }
 
-    .subtitle {
-      font-size: 18px;
-      color: #aaa;
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .cards {
+    .card-container {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
-      justify-content: center;
       margin-bottom: 60px;
     }
 
     .card {
-      flex: 1 1 280px;
+      flex: 1 1 30%;
       background-color: #1e1a2e;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(122, 114, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 25px rgba(122, 114, 255, 0.3);
-    }
-
-    .card h3 {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #9ab8ff;
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #b388ff;
     }
 
     .card p {
-      font-size: 14px;
+      color: #cccccc;
+      font-size: 1rem;
+    }
+
+    .fresh-take {
+      background-color: #1e1a2e;
+      padding: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .fresh-text {
+      flex: 2;
+    }
+
+    .fresh-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #9ab8ff;
+    }
+
+    .fresh-text p {
+      font-size: 1rem;
       color: #ccc;
+    }
+
+    .fresh-icon {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      background-color: #6a4fff;
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 20px;
+    }
+
+    .bottom-text {
+      text-align: center;
+      font-size: 1rem;
+      color: #aaa;
+      margin-top: 20px;
     }
 
     .highlight {
-      text-align: center;
-      margin: 80px auto;
-      max-width: 700px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #6287ff;
-      color: white;
-      border-radius: 999px;
-      font-weight: bold;
-      font-size: 16px;
-      margin-bottom: 24px;
-    }
-
-    .highlight h2 {
-      font-size: 28px;
-      font-weight: bold;
-      color: white;
-    }
-
-    .highlight p {
-      font-size: 16px;
-      color: #ccc;
-    }
-
-    .closing-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-top: 100px;
-      gap: 16px;
-    }
-
-    .closing-section p {
-      font-size: 14px;
-      color: #aaa;
+      color: #9ab8ff;
     }
   </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>About <span class="highlight">Lunaris Hacks</span></h1>
 
-  <!-- Star background layer -->
-  <div class="stars" id="stars"></div>
-
-  <!-- About Section -->
-  <div class="section">
-    <div class="title">About Lunaris</div>
-    <div class="subtitle">We're here to help students build, launch, and explore through tech.</div>
-
-    <div class="cards">
+    <div class="card-container">
       <div class="card">
-        <h3>🚀 Our Mission</h3>
-        <p>To empower students in space, hardware, and emerging tech by organizing hackathons, workshops, and project-based experiences.</p>
+        <h2>Innovation</h2>
+        <p>Push the boundaries of what’s possible with creative solutions and innovative engineering approaches.</p>
       </div>
       <div class="card">
-        <h3>🌌 Our Vision</h3>
-        <p>We aim to be the go-to space-tech group at university, helping students innovate and explore the final frontier.</p>
+        <h2>Collaboration</h2>
+        <p>Connect with engineers from diverse disciplines to build something extraordinary through teamwork.</p>
       </div>
       <div class="card">
-        <h3>🛠️ How We Help</h3>
-        <p>By hosting beginner-friendly technical events that blend creativity, collaboration, and community into something meaningful.</p>
+        <h2>Impact</h2>
+        <p>Create solutions that address real-world challenges and make a meaningful difference.</p>
       </div>
     </div>
 
-    <div class="highlight">
-      <div class="badge">A Fresh Take on Hackathons</div>
-      <h2>We don’t just code. We build real things, with real people, for real problems.</h2>
-      <p>From microcontrollers to mission control, Lunaris brings students from all disciplines together to learn, build, and launch.</p>
+    <div class="fresh-take">
+      <div class="fresh-text">
+        <h2>A Fresh Take on Hackathons</h2>
+        <p>Lunaris Hacks combines the best parts of case competitions and traditional hackathons into one. It’s not just about building cool projects — it’s about pitching your ideas, defending them, and showing off both your technical skills and creative thinking.</p>
+        <p>At Lunaris, we see engineers as more than just coders — they’re problem-solvers, designers, and future innovators. We’re building an event where creativity meets real-world impact, and where anyone passionate about engineering can bring their ideas to life.</p>
+      </div>
+      <div class="fresh-icon">
+        <div class="circle">ALL ENGINEERS WELCOME</div>
+      </div>
     </div>
 
-    <div class="closing-section">
-      <p>Open to all disciplines · No experience required · Come build something cool</p>
+    <div class="bottom-text">
+      Open to all types of engineers — mechanical, biomedical, computer, civil, or anything else. Everyone’s ideas and skills are welcome here.
+    </div>
+    <div class="bottom-text">
+      Come be part of something different — and help us push the limits of what a hackathon can be!
     </div>
   </div>
-
-  <!-- Star creation script -->
-  <script>
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.opacity = Math.random();
-      starsContainer.appendChild(star);
-    }
-  </script>
 </body>
+
 </html>
 
