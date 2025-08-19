@@ -1,48 +1,97 @@
-
-<footer style="background-color: rgb(3, 7, 31); color: #ccc; padding: 3rem 2rem 1.5rem; font-size: 0.95rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-    
-    <!-- Logo + Description -->
-    <div>
-      <div style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1rem;">
-         <span style="background: linear-gradient(to right, #9ab8ff, #b388ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LUNARIS</span>HACKS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lunaris Hacks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+   <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="images/logo.png" alt="Lunaris Hacks Logo" a href="index.html"></a></li>
       </div>
-      <p style="color: #aaa; font-size: 0.95rem;">
-        Redefining what a hackathon can be.<br />
-        Join us for the most exciting engineering<br />
-        innovation event of the year.
+      <ul class="nav-links">
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="meet_team.html">Meet the Team</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Star Background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="left">
+      <h1><span class="blue">LUN</span><span class="purple">ARIS</span><span class="lavender">HACKS</span></h1>
+      <p class="tagline">Redefining Engineering Innovation</p>
+      <p class="description">
+        A fresh take on hackathons, combining the best parts of case competitions and traditional hackathons into one innovative experience.
       </p>
-    </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h4 style="font-size: 1.05rem; margin-bottom: 1rem; color: #fff;">Quick Links</h4>
-      <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 0.5rem;"><a href="about.html" style="color: #9ab8ff; text-decoration: none;">About Us</a></li>
-        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #9ab8ff; text-decoration: none;">Events</a></li>
-        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #9ab8ff; text-decoration: none;">Meet the Team</a></li>
-        <li style="margin-bottom: 0.5rem;"><a href="faqs.html" style="color: #9ab8ff; text-decoration: none;">FAQ</a></li>
-      </ul>
-    </div>
-
-    <!-- Social -->
-    <div>
-      <h4 style="font-size: 1.05rem; margin-bottom: 1rem; color: #fff;">Follow Us</h4>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="#" style="color: #9ab8ff; text-decoration: none;">Instagram</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div>
-      <h4 style="font-size: 1.05rem; margin-bottom: 1rem; color: #fff;">Contact</h4>
-      <p><a href="mailto:lunarishacks@gmail.com" style="color: #9ab8ff; text-decoration: none;">lunarishacks@gmail.com</a></p>
+      </div>
+     <!--  <div class="buttons">
+        <button class="primary">Register Now</button>
+        <button class="secondary">Learn More</button>
+      </div> -->
+    <div class="right">
+      <img src="/images/moon.png" alt="Moon" class="moon" />
     </div>
   </div>
 
-  <hr style="border: none; border-top: 1px solid #1e1a2e; margin-bottom: 1.5rem;" />
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <!-- Logo + Description -->
+      <div>
+        <div class="footer-logo">
+          <span>LUNARIS</span>HACKS
+        </div>
+        <p class="footer-description">
+          Redefining what a hackathon can be.<br />
+          Join us for the most exciting engineering<br />
+          innovation event of the year.
+        </p>
+      </div>
 
-  <div style="text-align: center; font-size: 0.85rem; color: #aaa;">
-    &copy; 2025 Lunaris Hacks. All rights reserved.
-  </div>
-</footer>
+      <!-- Quick Links -->
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="team.html">Meet the Team</a></li>
+          <li><a href="faqs.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4>Follow Us</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/lunarishacks?utm_source=ig_web_button_share_sheet&igsh=b3Z2MXd3cWxjY2xt">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:lunarishacks@gmail.com">lunarishacks@gmail.com</a></p>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="copyright">
+      &copy; 2025 Lunaris Hacks. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
