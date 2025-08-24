@@ -235,11 +235,13 @@ nav {
    FOOTER
    ====================== */
 footer {
-  background-color: rgb(3, 7, 31);
+  background-color: rgba(3, 7, 31, 0.9);
+  backdrop-filter: blur(10px);
   color: #ccc;
   padding: 3rem 2rem 1.5rem;
   font-size: 0.95rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 1px solid rgba(154, 184, 255, 0.1);
 }
 
 .footer-grid {

@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lunaris Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | Lunaris Hacks</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
@@ -40,28 +43,43 @@
       50% { opacity: 1; }
     }
 
-    .section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
+    .events-container {
       position: relative;
       z-index: 1;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 0;
+    }
+
+    .section {
+      margin-bottom: 60px;
     }
 
     .section-title {
       text-align: center;
-      font-size: 36px;
-      font-weight: bold;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .section-title span {
       background: linear-gradient(to right, #9ab8ff, #b388ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      border-bottom: 3px solid #9ab8ff;
+      padding-bottom: 6px;
     }
 
     .section-subtitle {
       text-align: center;
-      margin-top: 10px;
-      font-size: 16px;
-      color: #aaa;
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .day-block {
@@ -193,14 +211,31 @@
   </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+   <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="images/logo.png" alt="Lunaris Hacks Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="meet_team.html">Meet the Team</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <!-- Twinkling Stars -->
+  <!-- Star Background -->
   <div class="stars" id="stars"></div>
 
-  <!-- Event Schedule -->
-  <div class="section">
-    <div class="section-title">Event Schedule</div>
-    <div class="section-subtitle">Mark your calendar for innovation, collaboration, and fun!</div>
+  <!-- Main Content -->
+  <div class="events-container">
+    <!-- Event Schedule -->
+    <div class="section">
+      <h1 class="section-title">Event <span>Schedule</span></h1>
+      <p class="section-subtitle">Mark your calendar for innovation, collaboration, and fun!</p>
 
     <div class="day-block">
       <div class="day-title"><div class="day-circle">1</div>Fall Workshops</div>
@@ -264,12 +299,12 @@
         </a>
       </div>
     </div>
-  </div>
+    </div>
 
-  <!-- Side-by-Side Events -->
-  <div class="section">
-    <div class="section-title">Event Highlights</div>
-    <div class="section-subtitle">Discover key parts of the Lunaris experience</div>
+    <!-- Event Highlights -->
+    <div class="section">
+      <h2 class="section-title">Event <span>Highlights</span></h2>
+      <p class="section-subtitle">Discover key parts of the Lunaris experience</p>
 
     <div class="event-grid">
       <div class="event-box">
@@ -291,21 +326,76 @@
         <div class="event-box-title">Networking</div>
         <div class="event-box-desc">Meet engineers, innovators, and sponsors from across Canada and beyond.</div>
       </div>
+      </div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <!-- Logo + Description -->
+      <div>
+        <div class="footer-logo">
+          <span>LUNARIS</span>HACKS
+        </div>
+        <p class="footer-description">
+          Redefining what a hackathon can be.<br />
+          Join us for the most exciting engineering<br />
+          innovation event of the year.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="meet_team.html">Meet the Team</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4>Follow Us</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/lunarishacks?utm_source=ig_web_button_share_sheet&igsh=b3Z2MXd3cWxjY2xt">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:lunarishacks@gmail.com">lunarishacks@gmail.com</a></p>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="copyright">
+      &copy; 2025 Lunaris Hacks. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
   <!-- Stars Script -->
   <script>
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.opacity = Math.random();
-      starsContainer.appendChild(star);
-    }
+    // Use existing star animation from script.js if available, otherwise create stars
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof createStars !== 'function') {
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+          const star = document.createElement('div');
+          star.classList.add('star');
+          star.style.top = Math.random() * 100 + '%';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 5 + 's';
+          star.style.opacity = Math.random();
+          starsContainer.appendChild(star);
+        }
+      }
+    });
   </script>
 </body>
 </html>

@@ -1,91 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunaris Hacks</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FAQ | Lunaris Hacks</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
-        body {
-      margin: 0;
-      padding: 0;
-      background-color: rgb(11, 5, 57);
-      font-family: Courier, monospace;
-      color: white;
-      overflow-x: hidden;
-    }
+      /* Custom styles for FAQ page content */
+      .faq-container {
+        position: relative;
+        z-index: 1;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 0;
+      }
 
-    /* Star background layer */
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+      .section-title {
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
 
-    .star {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: white;
-      border-radius: 50%;
-    }
+      .section-title span {
+        background: linear-gradient(to right, #9ab8ff, #b388ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-bottom: 3px solid #9ab8ff;
+        padding-bottom: 6px;
+      }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 20px;
-    }
+      .section-subtitle {
+        text-align: center;
+        color: #ccc;
+        font-size: 1.1rem;
+        margin-bottom: 60px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-   
+      .faq-list {
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
-@media (max-width: 768px) {
-  .divider-text {
-    font-size: 0.85rem;
-  }
-}
+      .faq-item {
+        background: #1e1a2e;
+        border-radius: 16px;
+        margin-bottom: 16px;
+        box-shadow: 0 0 15px rgba(122, 114, 255, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        overflow: hidden;
+      }
+
+      .faq-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(122, 114, 255, 0.2);
+      }
+
+      .faq-question {
+        width: 100%;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 24px 30px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.2s;
+      }
+
+      .faq-question:hover {
+        background: rgba(154, 184, 255, 0.05);
+      }
+
+      .faq-question.active {
+        background: rgba(154, 184, 255, 0.1);
+        border-bottom: 1px solid rgba(154, 184, 255, 0.2);
+      }
+
+      .faq-icon {
+        color: #9ab8ff;
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+      }
+
+      .faq-question.active .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        background: rgba(154, 184, 255, 0.02);
+      }
+
+      .faq-answer.active {
+        max-height: 500px;
+        padding: 0 30px 24px 30px;
+      }
+
+      .faq-answer p {
+        color: #ccc;
+        line-height: 1.6;
+        margin: 0;
+        padding-top: 20px;
+      }
+
+      .faq-answer ul {
+        color: #ccc;
+        padding-left: 20px;
+        margin: 10px 0;
+      }
+
+      .faq-answer li {
+        margin-bottom: 8px;
+      }
+
+      .contact-section {
+        margin-top: 60px;
+        background: #1e1a2e;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 0 15px rgba(122, 114, 255, 0.1);
+        text-align: center;
+      }
+
+      .contact-section h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+
+      .contact-section p {
+        color: #ccc;
+        margin-bottom: 20px;
+      }
+
+      .contact-section a {
+        color: #9ab8ff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .contact-section a:hover {
+        color: #b388ff;
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .faq-question {
+          padding: 20px 24px;
+          font-size: 1rem;
+        }
+
+        .faq-answer.active {
+          padding: 0 24px 20px 24px;
+        }
+
+        .contact-section {
+          padding: 30px 20px;
+        }
+      }
     </style>
-</head>
-<body style="background-color: rgb(19, 13, 70);">
-    <div class="stars">
-        <div class="star" style="top: 20px; left: 30px;"></div>
-        <div class="star" style="top: 150px; left: 200px;"></div>
-        <div class="star" style="top: 300px; left: 500px;"></div>
-        <div class="star" style="top: 90px; left: 700px;"></div>
-        <div class="star" style="top: 400px; left: 100px;"></div>
-        <div class="star" style="top: 250px; left: 900px;"></div>
-        <div class="star" style="top: 50px; left: 600px;"></div>
-        <div class="star" style="top: 600px; left: 300px;"></div>
-        <div class="star" style="top: 180px; left: 800px;"></div>
-        <div class="star" style="top: 500px; left: 1200px;"></div>
-        <div class="star" style="top: 900px; left: 1200px;"></div>
-        <div class="star" style="top: 750px; left: 1400px;"></div>
-        <div class="star" style="top: 650px; left: 1300px;"></div>
-        <div class="star" style="top: 800px; left: 1500px;"></div>
-    </div>
-    <div class="content">
-        <h1 style="color:white;font-family:sans-serif">FAQ</h1> 
-        <h3 style="color:white;font-family:sans-serif">How to register?</h3>
-        <h3 style="color:white;font-family:sans-serif">What is the deadline?</h3>
-        <h3 style="color:white;font-family:sans-serif">What is the eligibility requirements?</h3>
-        <h3 style="color:white;font-family:sans-serif">What to bring/What is provided?</h3>
-        <h3 style="color:white;font-family:sans-serif">What to bring/What is provided?</h3>
-        <h3 style="color:white;font-family:sans-serif">Food and accomodation details:</h3>
-        <h3 style="color:white;font-family:sans-serif">Prize information and distribution:</h3>
-        <h3 style="color:white;font-family:sans-serif">Submission requirements and formats:</h3>
-        <h3 style="color:white;font-family:sans-serif">Intellectual property details:</h3>
-        <h3 style="color:white;font-family:sans-serif">Prize information and distribution:</h3>
-        <h3 style="color:white;font-family:sans-serif">Refund/Cancellation properties:</h3>
-        <h3 style="color:white;font-family:sans-serif">Contact information for questions:</h3>
-        <h3 style="color:white;font-family:sans-serif">Prize information and distribution:</h3>
-        <h3 style="color:white;font-family:sans-serif">Technical requirements and setup:</h3>
-    </div>
-    
-    
+  </head>
 
+<body>
+  <!-- Navigation Bar -->
+   <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="images/logo.png" alt="Lunaris Hacks Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="meet_team.html">Meet the Team</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    
-</body>
+  <!-- Star Background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Main Content -->
+  <div class="faq-container">
+    <h1 class="section-title">Frequently Asked <span>Questions</span></h1>
+    <p class="section-subtitle">
+      Got questions? We've got answers! Here's everything you need to know about Lunaris Hacks.
+    </p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I register for Lunaris Hacks?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Registration will open soon! Keep an eye on our social media and website for announcements. When registration opens, you'll be able to sign up through our registration portal. We'll also send out notifications through our mailing list.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What are the registration deadlines?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Registration deadlines will be announced when registration opens. We recommend registering early as spots may be limited. Follow our Instagram @lunarishacks for the latest updates on important dates.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What are the eligibility requirements?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Lunaris Hacks is open to all types of engineers and engineering students:</p>
+          <ul>
+            <li>Currently enrolled university or college students in any engineering program</li>
+            <li>Recent graduates (within 2 years)</li>
+            <li>All engineering disciplines welcome: mechanical, biomedical, computer, civil, electrical, and more</li>
+            <li>Both individual participants and teams are welcome</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What should I bring? What will be provided?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Bring:</strong></p>
+          <ul>
+            <li>Your laptop and chargers</li>
+            <li>Student ID for verification</li>
+            <li>Comfortable clothes and any personal items</li>
+            <li>Your creativity and enthusiasm!</li>
+          </ul>
+          <p><strong>We'll provide:</strong></p>
+          <ul>
+            <li>Workspace and power outlets</li>
+            <li>WiFi and basic development tools access</li>
+            <li>Food and beverages throughout the event</li>
+            <li>Hardware and components for projects (limited quantities)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Food and accommodation details
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Food:</strong> We'll provide meals, snacks, and beverages throughout the event. We'll accommodate dietary restrictions - just let us know during registration.</p>
+          <p><strong>Accommodation:</strong> This is primarily a day event, but we'll have designated rest areas available. Specific accommodation details will be shared closer to the event date.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Prize information and distribution
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We're working on exciting prizes for various categories including innovation, impact, and technical excellence. Prize details and distribution information will be announced closer to the event. Winners will be selected by a panel of industry experts and mentors.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Submission requirements and formats
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Project submissions will include:</p>
+          <ul>
+            <li>A working prototype or demonstration</li>
+            <li>Project presentation (5-10 minutes)</li>
+            <li>Brief technical documentation</li>
+            <li>Code repository (if applicable)</li>
+          </ul>
+          <p>Detailed submission guidelines will be provided to participants during the event.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Intellectual property details
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>You retain full ownership of your intellectual property and any projects you create during the hackathon. Lunaris Hacks and sponsors do not claim any rights to your work. We only ask for permission to showcase winning projects for promotional purposes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Refund and cancellation policies
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Registration for Lunaris Hacks is free! If you need to cancel your registration, please let us know as soon as possible so we can offer your spot to someone on the waitlist. Cancellation policies for any paid workshops or premium tiers will be clearly outlined during registration.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Technical requirements and setup
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Basic technical requirements:</p>
+          <ul>
+            <li>Laptop with your preferred development environment</li>
+            <li>Access to coding tools and software you're comfortable with</li>
+            <li>No specific software requirements - use what works best for your project</li>
+            <li>We'll provide internet access and basic hardware components</li>
+          </ul>
+          <p>Detailed technical specifications will be shared with registered participants.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <h3>Still have questions?</h3>
+      <p>Can't find the answer you're looking for? We're here to help!</p>
+      <p>Email us at <a href="mailto:lunarishacks@gmail.com">lunarishacks@gmail.com</a></p>
+      <p>Follow us on <a href="https://www.instagram.com/lunarishacks">Instagram @lunarishacks</a> for updates</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <!-- Logo + Description -->
+      <div>
+        <div class="footer-logo">
+          <span>LUNARIS</span>HACKS
+        </div>
+        <p class="footer-description">
+          Redefining what a hackathon can be.<br />
+          Join us for the most exciting engineering<br />
+          innovation event of the year.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="meet_team.html">Meet the Team</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4>Follow Us</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/lunarishacks?utm_source=ig_web_button_share_sheet&igsh=b3Z2MXd3cWxjY2xt">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:lunarishacks@gmail.com">lunarishacks@gmail.com</a></p>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="copyright">
+      &copy; 2025 Lunaris Hacks. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          const faqItem = this.parentElement;
+          const answer = faqItem.querySelector('.faq-answer');
+          const isActive = this.classList.contains('active');
+          
+          // Close all other FAQ items
+          faqQuestions.forEach(q => {
+            q.classList.remove('active');
+            q.parentElement.querySelector('.faq-answer').classList.remove('active');
+          });
+          
+          // Toggle current FAQ item
+          if (!isActive) {
+            this.classList.add('active');
+            answer.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+  </body>
 </html>
 
