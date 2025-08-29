@@ -194,23 +194,12 @@
       }
 
       .custom-form {
-        max-width: 800px;
+        max-width: 600px;
         margin: 0 auto;
       }
 
-      .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 20px;
-      }
-
       .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group.full-width {
-        grid-column: 1 / -1;
+        margin-bottom: 24px;
       }
 
       .form-group label {
@@ -218,14 +207,18 @@
         margin-bottom: 8px;
         color: #9ab8ff;
         font-weight: 500;
-        font-size: 0.95rem;
+        font-size: 1rem;
+      }
+
+      .required {
+        color: #ff6b6b;
       }
 
       .form-group input,
       .form-group select,
       .form-group textarea {
         width: 100%;
-        padding: 12px 16px;
+        padding: 14px 16px;
         border: 2px solid rgba(154, 184, 255, 0.2);
         border-radius: 8px;
         background: rgba(154, 184, 255, 0.05);
@@ -243,38 +236,15 @@
         background: rgba(154, 184, 255, 0.1);
       }
 
-      .form-group textarea {
-        resize: vertical;
-        min-height: 100px;
-      }
-
-      .checkbox-group {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      .checkbox-item {
-        display: flex;
-        align-items: center;
-      }
-
-      .checkbox-item input[type="checkbox"] {
-        width: auto;
-        margin-right: 8px;
-      }
-
-      .checkbox-item label {
-        margin: 0;
-        color: #ccc;
-        font-weight: normal;
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #888;
       }
 
       .submit-btn {
         background: linear-gradient(to right, #9ab8ff, #b388ff);
         color: rgb(3, 7, 31);
-        padding: 14px 40px;
+        padding: 16px 40px;
         border: none;
         border-radius: 8px;
         font-size: 1.1rem;
@@ -348,10 +318,6 @@
         .form-title {
           font-size: 1.6rem;
         }
-
-        .form-grid {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
@@ -419,7 +385,7 @@
 
       <!-- Interest Form Section -->
       <section class="interest-form-section">
-        <h2 class="form-title">Join Our <span>Community</span></h2>
+        <h2 class="form-title">Lunaris Hacks General <span>Interest Form</span></h2>
         <p class="form-subtitle">
           Register your interest for Lunaris Hacks and be the first to know about updates, events, and opportunities.
         </p>
@@ -428,202 +394,28 @@
           <div id="message-container"></div>
           
           <form id="interest-form">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-              </div>
-              
-              <div class="form-group">
-                <label for="university">University/Institution *</label>
-                <input type="text" id="university" name="university" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="yearOfStudy">Year of Study *</label>
-                <select id="yearOfStudy" name="yearOfStudy" required>
-                  <option value="">Select year</option>
-                  <option value="1st Year">1st Year</option>
-                  <option value="2nd Year">2nd Year</option>
-                  <option value="3rd Year">3rd Year</option>
-                  <option value="4th Year">4th Year</option>
-                  <option value="Graduate">Graduate Student</option>
-                  <option value="PhD">PhD Student</option>
-                  <option value="Recent Graduate">Recent Graduate</option>
-                  <option value="Professional">Working Professional</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="major">Major/Field of Study *</label>
-                <input type="text" id="major" name="major" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="engineeringDiscipline">Engineering Discipline *</label>
-                <select id="engineeringDiscipline" name="engineeringDiscipline" required>
-                  <option value="">Select discipline</option>
-                  <option value="Computer Engineering">Computer Engineering</option>
-                  <option value="Software Engineering">Software Engineering</option>
-                  <option value="Electrical Engineering">Electrical Engineering</option>
-                  <option value="Mechanical Engineering">Mechanical Engineering</option>
-                  <option value="Civil Engineering">Civil Engineering</option>
-                  <option value="Chemical Engineering">Chemical Engineering</option>
-                  <option value="Biomedical Engineering">Biomedical Engineering</option>
-                  <option value="Aerospace Engineering">Aerospace Engineering</option>
-                  <option value="Environmental Engineering">Environmental Engineering</option>
-                  <option value="Industrial Engineering">Industrial Engineering</option>
-                  <option value="Materials Engineering">Materials Engineering</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="experienceLevel">Programming/Tech Experience Level *</label>
-                <select id="experienceLevel" name="experienceLevel" required>
-                  <option value="">Select level</option>
-                  <option value="Beginner">Beginner</option>
-                  <option value="Intermediate">Intermediate</option>
-                  <option value="Advanced">Advanced</option>
-                  <option value="Expert">Expert</option>
-                  <option value="No Experience">No Programming Experience</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="hackathonExperience">Previous Hackathon Experience *</label>
-                <select id="hackathonExperience" name="hackathonExperience" required>
-                  <option value="">Select experience</option>
-                  <option value="First Time">This would be my first hackathon</option>
-                  <option value="1-2 Events">1-2 previous hackathons</option>
-                  <option value="3-5 Events">3-5 previous hackathons</option>
-                  <option value="5+ Events">5+ previous hackathons</option>
-                  <option value="Organizer">I've organized hackathons</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group full-width">
-              <label>Areas of Interest (Check all that apply) *</label>
-              <div class="checkbox-group">
-                <div class="checkbox-item">
-                  <input type="checkbox" id="ai-ml" name="interests" value="AI/Machine Learning">
-                  <label for="ai-ml">AI/Machine Learning</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="web-dev" name="interests" value="Web Development">
-                  <label for="web-dev">Web Development</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="mobile-dev" name="interests" value="Mobile Development">
-                  <label for="mobile-dev">Mobile Development</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="hardware" name="interests" value="Hardware/IoT">
-                  <label for="hardware">Hardware/IoT</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="sustainability" name="interests" value="Sustainability">
-                  <label for="sustainability">Sustainability</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="healthcare" name="interests" value="Healthcare">
-                  <label for="healthcare">Healthcare</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="fintech" name="interests" value="FinTech">
-                  <label for="fintech">FinTech</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="gaming" name="interests" value="Gaming">
-                  <label for="gaming">Gaming</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="education" name="interests" value="Education">
-                  <label for="education">Education</label>
-                </div>
-                <div class="checkbox-item">
-                  <input type="checkbox" id="social-impact" name="interests" value="Social Impact">
-                  <label for="social-impact">Social Impact</label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="teamPreference">Team Preference *</label>
-                <select id="teamPreference" name="teamPreference" required>
-                  <option value="">Select preference</option>
-                  <option value="Solo">I want to work solo</option>
-                  <option value="With Friends">I'm coming with friends</option>
-                  <option value="Meet New People">I want to meet new teammates</option>
-                  <option value="No Preference">No preference</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="hearAboutUs">How did you hear about us? *</label>
-                <select id="hearAboutUs" name="hearAboutUs" required>
-                  <option value="">Select option</option>
-                  <option value="Social Media">Social Media</option>
-                  <option value="University">University/Professor</option>
-                  <option value="Friend">Friend/Word of Mouth</option>
-                  <option value="Website">Website</option>
-                  <option value="Other Event">Other Event</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label for="firstName">First Name <span class="required">*</span></label>
+              <input type="text" id="firstName" name="firstName" placeholder="Your answer" required>
             </div>
             
             <div class="form-group">
-              <label for="dietaryRestrictions">Dietary Restrictions/Allergies</label>
-              <textarea id="dietaryRestrictions" name="dietaryRestrictions" placeholder="Please list any dietary restrictions or food allergies..."></textarea>
+              <label for="lastName">Last Name <span class="required">*</span></label>
+              <input type="text" id="lastName" name="lastName" placeholder="Your answer" required>
             </div>
             
             <div class="form-group">
-              <label for="accessibilityNeeds">Accessibility Needs</label>
-              <textarea id="accessibilityNeeds" name="accessibilityNeeds" placeholder="Please describe any accessibility accommodations you need..."></textarea>
-            </div>
-            
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="emergencyContactName">Emergency Contact Name *</label>
-                <input type="text" id="emergencyContactName" name="emergencyContactName" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="emergencyContactPhone">Emergency Contact Phone *</label>
-                <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
-              </div>
+              <label for="email">TMU Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="Your answer" required>
             </div>
             
             <div class="form-group">
-              <label for="emergencyContactRelationship">Emergency Contact Relationship *</label>
-              <input type="text" id="emergencyContactRelationship" name="emergencyContactRelationship" placeholder="e.g., Parent, Sibling, Friend" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="additionalInfo">Additional Information</label>
-              <textarea id="additionalInfo" name="additionalInfo" placeholder="Anything else you'd like us to know? Questions, special circumstances, etc."></textarea>
+              <label for="program">Program <span class="required">*</span></label>
+              <input type="text" id="program" name="program" placeholder="Your answer" required>
             </div>
             
             <button type="submit" class="submit-btn" id="submit-btn">
-              <span id="btn-text">Submit Registration</span>
+              <span id="btn-text">Submit</span>
             </button>
           </form>
         </div>
@@ -699,20 +491,12 @@
       try {
         // Collect form data
         const formData = new FormData(this);
-        const data = {};
-        
-        // Handle regular form fields
-        for (let [key, value] of formData.entries()) {
-          if (key === 'interests') {
-            if (!data.interests) data.interests = [];
-            data.interests.push(value);
-          } else {
-            data[key] = value;
-          }
-        }
-        
-        // Ensure interests array exists
-        if (!data.interests) data.interests = [];
+        const data = {
+          firstName: formData.get('firstName'),
+          lastName: formData.get('lastName'),
+          email: formData.get('email'),
+          program: formData.get('program')
+        };
         
         // Submit to backend
         const response = await fetch(`${BACKEND_URL}/api/interest-form`, {
@@ -755,7 +539,7 @@
       } finally {
         // Reset button state
         submitBtn.disabled = false;
-        btnText.innerHTML = 'Submit Registration';
+        btnText.innerHTML = 'Submit';
       }
     });
   </script>
