@@ -592,4 +592,163 @@
             
             <div class="form-group">
               <label for="specialRequirements">Special Requirements or Requests</label>
-              <textarea id="specialRequirements
+              <textarea id="specialRequirements" name="specialRequirements" placeholder="Any special setup requirements, accessibility needs, or specific requests..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="marketingMaterials">Marketing Materials Available</label>
+              <textarea id="marketingMaterials" name="marketingMaterials" placeholder="Please describe any marketing materials, swag, or promotional items you can provide..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="additionalInfo">Additional Information</label>
+              <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other information you'd like to share about your company, goals, or questions about sponsorship..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span id="btn-text">Submit Sponsorship Application</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <!-- Logo + Description -->
+      <div>
+        <div class="footer-logo">
+          <span>LUNARIS</span>HACKS
+        </div>
+        <p class="footer-description">
+          Redefining what a hackathon can be.<br />
+          Join us for the most exciting engineering<br />
+          innovation event of the year.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <!-- <li><a href="meet_team.html">Meet the Team</a></li> -->
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4>Follow Us</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/lunarishacks?utm_source=ig_web_button_share_sheet&igsh=b3Z2MXd3cWxjY2xt">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:lunarishacks@gmail.com">lunarishacks@gmail.com</a></p>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="copyright">
+      &copy; 2025 Lunaris Hacks. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <script>
+    // Sponsorship Form Submission Handler
+    const BACKEND_URL = 'https://your-render-backend-url.onrender.com'; // Replace with your actual Render URL
+    
+    document.getElementById('sponsorship-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const messageContainer = document.getElementById('message-container');
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.innerHTML = '<div class="loading-spinner"></div>Submitting...';
+      messageContainer.innerHTML = '';
+      
+      try {
+        // Collect form data
+        const formData = new FormData(this);
+        const data = {};
+        
+        // Handle regular form fields
+        for (let [key, value] of formData.entries()) {
+          if (key === 'primaryGoals') {
+            if (!data.primaryGoals) data.primaryGoals = [];
+            data.primaryGoals.push(value);
+          } else if (key === 'boothInterest' || key === 'workshopInterest' || key === 'judgingInterest' || key === 'networkingInterest') {
+            data[key] = value === 'true';
+          } else {
+            data[key] = value;
+          }
+        }
+        
+        // Ensure primaryGoals array exists
+        if (!data.primaryGoals) data.primaryGoals = [];
+        
+        // Ensure boolean fields exist
+        if (!data.boothInterest) data.boothInterest = false;
+        if (!data.workshopInterest) data.workshopInterest = false;
+        if (!data.judgingInterest) data.judgingInterest = false;
+        if (!data.networkingInterest) data.networkingInterest = false;
+        
+        // Submit to backend
+        const response = await fetch(`${BACKEND_URL}/api/sponsorship-form`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          // Show success message
+          messageContainer.innerHTML = `
+            <div class="success-message">
+              <i class="fas fa-check-circle"></i> ${result.message}
+            </div>
+          `;
+          
+          // Reset form
+          this.reset();
+          
+          // Scroll to success message
+          messageContainer.scrollIntoView({ behavior: 'smooth' });
+          
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+        
+      } catch (error) {
+        // Show error message
+        messageContainer.innerHTML = `
+          <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i> ${error.message}
+          </div>
+        `;
+        
+        messageContainer.scrollIntoView({ behavior: 'smooth' });
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.innerHTML = 'Submit Sponsorship Application';
+      }
+    });
+  </script>
+  </body>
+</html>
