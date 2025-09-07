@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+    <!-- Sponsor Logos Section -->
+<div class="sponsor-logos">
+  <img src="images/iicing_logo.webp" alt="iiCiNG Logo">
+  <img src="images/sopure.png" alt="Sopure Logo">
+  <img src="images/wizeprep.png" alt="Wize Prep Logo">
+  <img src="images/redbull.png" alt="Red Bull Logo">
+  <img src="images/mrpuffs.webp" alt="Mr.Puffs Logo">
+</div>
+
     <style>
       /* Custom styles for sponsors page content */
       .sponsors-container {
@@ -33,6 +42,26 @@
         border-bottom: 3px solid #9ab8ff;
         padding-bottom: 6px;
       }
+  .sponsor-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+    }
+
+.sponsor-logos img {
+  max-height: 100px;  /* adjust logo size */
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.sponsor-logos img:hover {
+  transform: scale(1.1);
+}
+
 
       .cards {
         display: flex;
