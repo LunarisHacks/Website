@@ -409,34 +409,8 @@
           Interested in partnering with us? Fill out the form below and we'll get in touch to discuss sponsorship opportunities that align with your goals.
         </p>
         
-        <div class="custom-form">
-          <div id="message-container"></div>
-          
-          <form id="sponsorship-form">
-            <div class="form-group">
-              <label for="name">Name <span class="required">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Your answer" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="Your answer" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="phoneNumber">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Your answer" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="comment">Comment <span class="required">*</span></label>
-              <textarea id="comment" name="comment" placeholder="Your answer" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn" id="submit-btn">
-              <span id="btn-text">Submit</span>
-            </button>
-          </form>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeFrkeuEsyHoCJFDtJmj7FDhKMs6PQMXRAwWjmdypJ1cO4Q5A/viewform?embedded=true" width="640" height="852" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
       </section>
     </div>
@@ -491,76 +465,5 @@
 
   <script src="script.js"></script>
   
-  <script>
-    // Sponsorship Form Submission Handler
-    const BACKEND_URL = 'https://lunaris-hacks-api.onrender.com';
-    
-    document.getElementById('sponsorship-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const submitBtn = document.getElementById('submit-btn');
-      const btnText = document.getElementById('btn-text');
-      const messageContainer = document.getElementById('message-container');
-      
-      // Show loading state
-      submitBtn.disabled = true;
-      btnText.innerHTML = '<div class="loading-spinner"></div>Submitting...';
-      messageContainer.innerHTML = '';
-      
-      try {
-        // Collect form data
-        const formData = new FormData(this);
-        const data = {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phoneNumber: formData.get('phoneNumber'),
-          comment: formData.get('comment')
-        };
-        
-        // Submit to backend
-        const response = await fetch(`${BACKEND_URL}/api/sponsorship-form`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          // Show success message
-          messageContainer.innerHTML = `
-            <div class="success-message">
-              <i class="fas fa-check-circle"></i> ${result.message}
-            </div>
-          `;
-          
-          // Reset form
-          this.reset();
-          
-          // Scroll to success message
-          messageContainer.scrollIntoView({ behavior: 'smooth' });
-          
-        } else {
-          throw new Error(result.message || 'Submission failed');
-        }
-        
-      } catch (error) {
-        // Show error message
-        messageContainer.innerHTML = `
-          <div class="error-message">
-            <i class="fas fa-exclamation-triangle"></i> ${error.message}
-          </div>
-        `;
-        
-        messageContainer.scrollIntoView({ behavior: 'smooth' });
-      } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        btnText.innerHTML = 'Submit';
-      }
-    });
-  </script>
   </body>
 </html>
