@@ -52,8 +52,6 @@
   transform: scale(1.1);
 }
 
-
-
       .cards {
         display: flex;
         flex-wrap: wrap;
@@ -491,7 +489,54 @@
     </div>
   </footer>
 
- 
+  <script>
+const BACKEND_URL = 'https://lunarishacks.vercel.app';
+
+document.getElementById('sponsorship-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const messageContainer = document.getElementById('message-container');
+  
+  // Show loading state
+  submitBtn.disabled = true;
+  btnText.innerHTML = '<span class="loading-spinner"></span>Submitting...';
+  messageContainer.innerHTML = '';
+  
+  try {
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phoneNumber: formData.get('phoneNumber'),
+      comment: formData.get('comment')
+    };
+
+    const response = await fetch(`${BACKEND_URL}/api/sponsorship-form`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      messageContainer.innerHTML = '<div class="success-message">Thank you! Your sponsorship inquiry has been submitted successfully.</div>';
+      this.reset();
+    } else {
+      messageContainer.innerHTML = `<div class="error-message">${result.message}</div>`;
+    }
+  } catch (error) {
+    messageContainer.innerHTML = '<div class="error-message">Something went wrong. Please try again later.</div>';
+  } finally {
+    submitBtn.disabled = false;
+    btnText.textContent = 'Submit';
+  }
+});
+  </script>
   
   </body>
 </html>
