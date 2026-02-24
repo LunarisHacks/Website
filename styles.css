@@ -481,4 +481,49 @@ footer {
   .countdown-sep {
     font-size: 1.6rem;
   }
+
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.primary {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #6c63ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.primary:hover {
+  background-color: #5548e0;
+  transform: translateY(-2px);
+}
+
+/* Buttons Container */
+.buttons {
+  display: flex;              /* use flexbox for centering */
+  flex-direction: column;     /* stack title above button */
+  align-items: center;        /* horizontal centering */
+  margin-top: 20px;           /* spacing from above content */
+  gap: 10px;                  /* space between title and button */
+}
+
+/* Title Above Button */
+.button-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;             /* optional: match site theme */
+  text-align: center;
+}
+
+h2 {
+  text-align: center;      /* centers the text horizontally */
+  color: #ffffff;          /* optional: make it visible on dark background */
+  font-size: 28px;         /* adjust size if needed */
+  margin-bottom: 10px;     /* space between title and button */
 }
