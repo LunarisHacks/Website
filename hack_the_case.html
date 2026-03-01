@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hack the Case | Lunaris Hacks</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: rgb(3, 7, 31);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+
+    /* ── HERO ── */
+    .htc-hero {
+      text-align: center;
+      padding: 36px 0 52px;
+    }
+
+    .htc-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #9ab8ff, #b388ff, #d8b9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.7rem;
+    }
+
+    .htc-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0.3rem 0 1rem;
+      background: linear-gradient(135deg, #9ab8ff 0%, #b388ff 55%, #d8b9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .htc-dates {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: #8a8aaa;
+      margin-bottom: 1.6rem;
+      background: rgba(154, 184, 255, 0.07);
+      border: 1px solid rgba(154, 184, 255, 0.18);
+      border-radius: 50px;
+      padding: 7px 20px;
+    }
+
+    .htc-dates i {
+      color: #b388ff;
+    }
+
+    .htc-desc {
+      font-size: 1rem;
+      color: #aaa;
+      line-height: 1.75;
+      max-width: 660px;
+      margin: 0 auto 2rem;
+    }
+
+    .htc-register-btn {
+      display: inline-block;
+      padding: 13px 36px;
+      background: linear-gradient(to right, #9ab8ff, #b388ff);
+      color: rgb(3, 7, 31);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 16px rgba(154, 184, 255, 0.2);
+    }
+
+    .htc-register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(154, 184, 255, 0.35);
+    }
+
+    .htc-discord-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 36px;
+      background: #5865F2;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 16px rgba(88, 101, 242, 0.35);
+    }
+
+    .htc-discord-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(88, 101, 242, 0.5);
+      background: #4752c4;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(154, 184, 255, 0.1);
+      margin: 0 0 52px;
+    }
+
+    /* ── SCHEDULE HEADING ── */
+    .schedule-heading {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .schedule-heading h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.35rem;
+    }
+
+    .schedule-heading p {
+      color: #8a8aaa;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: center;
+      margin-bottom: 2.4rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      color: #999;
+      letter-spacing: 0.03em;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── DAY TABS ── */
+    .day-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 2.8rem;
+    }
+
+    .day-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 30px;
+      border-radius: 50px;
+      border: 2px solid rgba(154, 184, 255, 0.45);
+      background: transparent;
+      color: #ccc;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .day-tab:hover {
+      border-color: rgba(154, 184, 255, 0.45);
+      color: #9ab8ff;
+    }
+
+    .day-tab.active {
+      background: linear-gradient(to right, #9ab8ff, #b388ff);
+      color: rgb(3, 7, 31);
+      border-color: transparent;
+      box-shadow: 0 4px 18px rgba(154, 184, 255, 0.3);
+    }
+
+    /* ── DAY CONTENT ── */
+    .day-content { display: none; }
+    .day-content.active { display: block; }
+
+    .day-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b388ff;
+      margin: 0 0 0.3rem;
+    }
+
+    .day-date-heading {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 2rem;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 52px;
+    }
+
+    /* the vertical gradient line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      bottom: 18px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(154, 184, 255, 0.04),
+        rgba(154, 184, 255, 0.45) 12%,
+        rgba(179, 136, 255, 0.55) 50%,
+        rgba(154, 184, 255, 0.45) 88%,
+        rgba(154, 184, 255, 0.04)
+      );
+    }
+
+    .timeline-item {
+      position: relative;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    /* glowing dot on the line */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 14px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--dot-color, #9ab8ff);
+      box-shadow: 0 0 10px var(--dot-color, #9ab8ff),
+                  0 0 22px rgba(154, 184, 255, 0.15);
+      z-index: 1;
+    }
+
+    /* icon circle */
+    .tl-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--icon-bg, rgba(154, 184, 255, 0.08));
+      border: 1.5px solid var(--icon-border, rgba(154, 184, 255, 0.25));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--icon-color, #9ab8ff);
+    }
+
+    /* event card */
+    .tl-card {
+      flex: 1;
+      background: rgba(30, 26, 46, 0.75);
+      border-radius: 12px;
+      padding: 14px 18px;
+      border-left: 3px solid var(--card-accent, #9ab8ff);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tl-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 22px rgba(122, 114, 255, 0.18);
+    }
+
+    .tl-time {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--card-accent, #9ab8ff);
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .tl-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .tl-desc {
+      font-size: 0.855rem;
+      color: #999;
+      line-height: 1.55;
+    }
+
+    /* nested note inside a card (e.g. lunch inside work block) */
+    .tl-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #ffb347;
+      background: rgba(255, 179, 71, 0.1);
+      border: 1px solid rgba(255, 179, 71, 0.22);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    /* ── CATEGORY VARIABLES ── */
+    .cat-arrival   { --dot-color: #9ab8ff; --icon-bg: rgba(154,184,255,0.09); --icon-border: rgba(154,184,255,0.28); --icon-color: #9ab8ff; --card-accent: #9ab8ff; }
+    .cat-ceremony  { --dot-color: #b388ff; --icon-bg: rgba(179,136,255,0.09); --icon-border: rgba(179,136,255,0.28); --icon-color: #b388ff; --card-accent: #b388ff; }
+    .cat-work      { --dot-color: #4ecdc4; --icon-bg: rgba(78,205,196,0.09);  --icon-border: rgba(78,205,196,0.28);  --icon-color: #4ecdc4; --card-accent: #4ecdc4; }
+    .cat-meal      { --dot-color: #ffb347; --icon-bg: rgba(255,179,71,0.09);  --icon-border: rgba(255,179,71,0.28);  --icon-color: #ffb347; --card-accent: #ffb347; }
+    .cat-deadline  { --dot-color: #ff6b9d; --icon-bg: rgba(255,107,157,0.1);  --icon-border: rgba(255,107,157,0.32); --icon-color: #ff6b9d; --card-accent: #ff6b9d; }
+    .cat-panel     { --dot-color: #4ecdc4; --icon-bg: rgba(78,205,196,0.09);  --icon-border: rgba(78,205,196,0.28);  --icon-color: #4ecdc4; --card-accent: #4ecdc4; }
+    .cat-networking{ --dot-color: #95e1d3; --icon-bg: rgba(149,225,211,0.09); --icon-border: rgba(149,225,211,0.28); --icon-color: #95e1d3; --card-accent: #95e1d3; }
+    .cat-awards    { --dot-color: #ffd700; --icon-bg: rgba(255,215,0,0.09);   --icon-border: rgba(255,215,0,0.28);   --icon-color: #ffd700; --card-accent: #ffd700; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .htc-title { font-size: 2.2rem; }
+
+      .day-tabs { gap: 8px; }
+      .day-tab { padding: 10px 20px; font-size: 0.87rem; }
+
+      .timeline { padding-left: 40px; }
+
+      .tl-icon { width: 34px; height: 34px; font-size: 12px; }
+      .tl-card { padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="images/logo.png" alt="Lunaris Hacks Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="meet_the_team.html">Meet the Team</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="hack_the_case.html">Hack the Case</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Star Background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Page Content -->
+  <div class="page-wrapper">
+
+    <!-- ── HERO ── -->
+    <section class="htc-hero">
+      <p class="htc-eyebrow">Lunaris Hacks Presents</p>
+      <h1 class="htc-title">Hack the Case</h1>
+      <p class="htc-dates">
+        <i class="fas fa-calendar-days"></i>
+        March 7 and 8, 2026 &nbsp;&bull;&nbsp; Toronto Metropolitan University
+      </p>
+      <p class="htc-desc">
+        Hack the Case brings together TMU engineering students to learn from industry professionals and compete in teams.
+        It combines the technicality of hackathons through a coding challenge and the strategic thinking of case
+        competitions through a business challenge, all built around the same central theme. Enhance your skills,
+        network with professionals, and gain insights from industry leaders.
+      </p>
+      <a href="https://discord.gg/GhMvEfRg5Y" target="_blank" class="htc-discord-btn">
+        <i class="fa-brands fa-discord"></i> Join our Discord
+      </a>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- ── SCHEDULE ── -->
+    <section>
+      <div class="schedule-heading">
+        <h2>Event Schedule</h2>
+        <p>All times are Eastern Time (ET)</p>
+      </div>
+
+      
+
+      <!-- Day Tabs -->
+      <div class="day-tabs">
+        <button class="day-tab active" onclick="switchDay(1)">
+          <i class="fas"></i>Day 1 (Mar 7)
+        </button>
+        <button class="day-tab" onclick="switchDay(2)">
+          <i class="fas"></i>Day 2 (Mar 8)
+        </button>
+      </div>
+
+      <!-- ═══════════ DAY 1 ═══════════ -->
+      <div class="day-content active" id="day-1">
+        <h3 class="day-date-heading">Saturday, March 7th, 2026</h3>
+
+        <div class="timeline">
+
+          <div class="timeline-item cat-arrival">
+            <div class="tl-icon"><i class="fas fa-door-open"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">9:00 AM to 9:30 AM</div>
+              <div class="tl-title">Attendees Arrive &amp; Check-In</div>
+              <div class="tl-desc">Doors open. Check in with your team and grab some breakfast to fuel the day ahead.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-ceremony">
+            <div class="tl-icon"><i class="fas fa-microphone"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">9:30 AM to 10:00 AM</div>
+              <div class="tl-title">Opening Remarks</div>
+              <div class="tl-desc">Kick off the event with welcome remarks and an overview of the challenges ahead.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-work">
+            <div class="tl-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">10:00 AM to 10:30 AM</div>
+              <div class="tl-title">Team Briefing</div>
+              <div class="tl-desc">Teams are guided to their respective rooms for a full briefing on the coding and business challenges.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-work">
+            <div class="tl-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">10:30 AM to 6:30 PM</div>
+              <div class="tl-title">Teams Work on Presentations</div>
+              <div class="tl-desc">The main hacking block. Collaborate, build, and strategize to tackle both the coding and business challenges and create a compelling, well-rounded submission.</div>
+              <div class="tl-note"><i class="fas fa-utensils"></i>Lunch provided from 12:30 PM to 1:30 PM</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-meal">
+            <div class="tl-icon"><i class="fas fa-utensils"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">12:30 PM to 1:30 PM</div>
+              <div class="tl-title">Lunch</div>
+              <div class="tl-desc">Take a break and refuel. Lunch is provided for all participants. (Included within the working block above.)</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-deadline">
+            <div class="tl-icon"><i class="fas fa-flag-checkered"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">6:30 PM</div>
+              <div class="tl-title">Submission Deadline</div>
+              <div class="tl-desc">All team submissions must be completed by 6:30 PM sharp. No late submissions will be accepted.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-ceremony">
+            <div class="tl-icon"><i class="fas fa-microphone"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">6:30 PM to 6:45 PM</div>
+              <div class="tl-title">Closing Remarks</div>
+              <div class="tl-desc">Great work today! Come back tomorrow for industry insights, presentations, and the awards ceremony.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════ DAY 2 ═══════════ -->
+      <div class="day-content" id="day-2">
+        <h3 class="day-date-heading">Sunday, March 8th, 2026</h3>
+
+        <div class="timeline">
+
+          <div class="timeline-item cat-arrival">
+            <div class="tl-icon"><i class="fas fa-door-open"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">10:00 AM to 10:30 AM</div>
+              <div class="tl-title">Attendees Arrive &amp; Check-In</div>
+              <div class="tl-desc">Doors open for Day 2. Check in and enjoy breakfast before the day begins.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-ceremony">
+            <div class="tl-icon"><i class="fas fa-microphone"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">10:30 AM to 11:00 AM</div>
+              <div class="tl-title">Opening Remarks</div>
+              <div class="tl-desc">Welcome back remarks to kick off the presentation and networking day.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-panel">
+            <div class="tl-icon"><i class="fas fa-users"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">11:00 AM to 12:00 PM</div>
+              <div class="tl-title">Industry Panel</div>
+              <div class="tl-desc">Hear from experienced industry professionals as they share insights, career journeys, and advice for aspiring engineers.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-networking">
+            <div class="tl-icon"><i class="fas fa-circle-question"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">12:00 PM to 12:10 PM</div>
+              <div class="tl-title">Student Open Q&amp;A</div>
+              <div class="tl-desc">Ask the panelists your questions directly in an open forum.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-networking">
+            <div class="tl-icon"><i class="fas fa-handshake"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">12:10 PM to 12:30 PM</div>
+              <div class="tl-title">Networking Session</div>
+              <div class="tl-desc">Connect with industry professionals and fellow participants. Industry Panel concludes.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-meal">
+            <div class="tl-icon"><i class="fas fa-utensils"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">12:30 PM to 1:15 PM</div>
+              <div class="tl-title">Lunch</div>
+              <div class="tl-desc">Enjoy a provided lunch and recharge before the final presentation block.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-arrival">
+            <div class="tl-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">1:15 PM to 1:30 PM</div>
+              <div class="tl-title">Teams &amp; Judges Guided to Rooms</div>
+              <div class="tl-desc">Teams and judges are escorted to their respective presentation rooms to get settled.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-work">
+            <div class="tl-icon"><i class="fas fa-chalkboard-user"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">1:30 PM to 5:00 PM</div>
+              <div class="tl-title">Team Presentations to Judges + Deliberation</div>
+              <div class="tl-desc">Teams present their coding and business solutions to the panel of judges. Deliberation takes place after all presentations are complete.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item cat-awards">
+            <div class="tl-icon"><i class="fas fa-trophy"></i></div>
+            <div class="tl-card">
+              <div class="tl-time">5:00 PM to 7:00 PM</div>
+              <div class="tl-title">Awards Ceremony &amp; Dinner</div>
+              <div class="tl-desc">Celebrate the outstanding work from all teams, recognize the winners, and enjoy a closing dinner together. Thank you for participating!</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span>LUNARIS</span> HACKS
+        </div>
+        <p class="footer-description">
+          Redefining what a hackathon can be.<br />
+          Join us for the most exciting engineering<br />
+          innovation event of the year.
+        </p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="hack_the_case.html">Hack the Case</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/lunarishacks?utm_source=ig_web_button_share_sheet&igsh=b3Z2MXd3cWxjY2xt">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:lunarishacks@torontomu.ca">lunarishacks@torontomu.ca</a></p>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="copyright">
+      &copy; 2025 Lunaris Hacks. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Star background
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+
+    // Day tab switcher
+    function switchDay(day) {
+      document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('day-' + day).classList.add('active');
+      document.querySelectorAll('.day-tab')[day - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>
