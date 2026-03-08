@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meet the Team | Lunaris Hacks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0d26;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Starfield background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #9ab8ff, #b388ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .member-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(122, 114, 255, 0.4);
+    }
+
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 3px solid #7f8bff;
+    }
+
+    .member-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .member-role {
+      font-size: 16px;
+      color: #a0a9ff;
+      margin-bottom: 12px;
+    }
+
+    .member-bio {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .contact-icons {
+      margin-top: 14px;
+    }
+
+    .contact-icons a {
+      color: #7f8bff;
+      margin: 0 8px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-icons a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Star background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Team Section -->
+  <div class="container">
+    <h1 class="section-title">Meet the Team</h1>
+
+    <div class="team-grid">
+      
+      <!-- Akshara Patel -->
+      <div class="member-card">
+        <img src="images/akshara.jpg" alt="Akshara Patel" class="member-photo">
+        <div class="member-name">Akshara Patel</div>
+        <div class="member-role">Co-Founder</div>
+        <div class="member-bio">
+          Passionate about creating opportunities for student innovators through hackathons and tech events.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:akshara.patel@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Rishabh Mistry -->
+      <div class="member-card">
+        <img src="images/rishabh.jpg" alt="Rishabh Mistry" class="member-photo">
+        <div class="member-name">Rishabh Mistry</div>
+        <div class="member-role">Co-Founder</div>
+        <div class="member-bio">
+          Dedicated to building a vibrant community of hackers and fostering innovation in tech.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:rishabh.mistry@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Valencia -->
+      <div class="member-card">
+        <img src="images/valencia.jpg" alt="Valencia" class="member-photo">
+        <div class="member-name">Valencia</div>
+        <div class="member-role">Co-VP Tech</div>
+        <div class="member-bio">
+          Leading technical initiatives and ensuring seamless execution of our tech infrastructure.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:vessoudasse@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Gajanan -->
+      <div class="member-card">
+        <img src="images/gajanan.jpg" alt="Gajanan" class="member-photo">
+        <div class="member-name">Gajanan</div>
+        <div class="member-role">Co-Director Tech</div>
+        <div class="member-bio">
+          Managing technical operations and supporting our development team's success.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:gajanan.vigneswaran@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Mehrsa -->
+      <div class="member-card">
+        <img src="images/mehrsa.jpg" alt="Mehrsa" class="member-photo">
+        <div class="member-name">Mehrsa</div>
+        <div class="member-role">Associate Tech</div>
+        <div class="member-bio">
+          Contributing to our technical projects and bringing fresh ideas to the team.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:mkarbasforushha@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Shubh -->
+      <div class="member-card">
+        <img src="images/shubh.jpg" alt="Shubh" class="member-photo">
+        <div class="member-name">Shubh</div>
+        <div class="member-role">Associate Tech</div>
+        <div class="member-bio">
+          Passionate about developing innovative solutions and supporting hackathon participants.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:skansara@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Tanisha Jogadia -->
+      <div class="member-card">
+        <img src="images/tanisha.jpg" alt="Tanisha Jogadia" class="member-photo">
+        <div class="member-name">Tanisha Jogadia</div>
+        <div class="member-role">VP Corporate Relations</div>
+        <div class="member-bio">
+          Building partnerships with industry leaders to create opportunities for our community.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:tanisha.jogadia@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Yachi -->
+      <div class="member-card">
+        <img src="images/yachi.jpg" alt="Yachi" class="member-photo">
+        <div class="member-name">Yachi</div>
+        <div class="member-role">Associate Corporate Relations</div>
+        <div class="member-bio">
+          Connecting with sponsors and partners to enhance the hackathon experience.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:ykumar@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Nishaa -->
+      <div class="member-card">
+        <img src="images/nishaa.jpg" alt="Nishaa" class="member-photo">
+        <div class="member-name">Nishaa</div>
+        <div class="member-role">VP Events</div>
+        <div class="member-bio">
+          Orchestrating memorable events and ensuring every detail creates an amazing experience.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:nishaa.badar@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Zara -->
+      <div class="member-card">
+        <img src="images/zara.jpg" alt="Zara" class="member-photo">
+        <div class="member-name">Zara</div>
+        <div class="member-role">Director Events</div>
+        <div class="member-bio">
+          Planning and executing engaging activities that bring our community together.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:zumer@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Salwa -->
+      <div class="member-card">
+        <img src="images/salwa.jpg" alt="Salwa" class="member-photo">
+        <div class="member-name">Salwa</div>
+        <div class="member-role">Associate Events</div>
+        <div class="member-bio">
+          Supporting event coordination and creating welcoming experiences for all participants.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:salwa.mukhtar@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Trisha Benedict -->
+      <div class="member-card">
+        <img src="images/trisha.jpg" alt="Trisha Benedict" class="member-photo">
+        <div class="member-name">Trisha Benedict</div>
+        <div class="member-role">Associate Events</div>
+        <div class="member-bio">
+          Helping organize and manage events to ensure smooth operations and participant satisfaction.
+        </div>
+        <div class="contact-icons">
+          <a href="mailto:tbenedict@torontomu.ca"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Star generation -->
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+</html>
